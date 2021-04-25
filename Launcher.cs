@@ -44,7 +44,7 @@ public class Launcher
 			return false;
 		}
 		
-		if (string.IsNullOrEmpty(sa_path) {
+		if (string.IsNullOrEmpty(sa_path)) {
 		    	return false;
 		}
 
