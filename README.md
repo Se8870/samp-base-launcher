@@ -12,7 +12,6 @@ Laucher launcher = new Launcher("ip-kamu.net:7777 "); // selalu tinggalkan spasi
 
 public Button1_Clicked(object sender, EventArgs e) {
     try {
-        launcher.GetPath();
         launcher.Start("Nama_Kalian", "password_server");
     }
     catch {
