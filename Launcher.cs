@@ -22,6 +22,11 @@ public class Launcher
 	
 	public Launcher(string ipAddress)
 	{
+		// init when declared
+		if (sa_path == null) {
+			sa_path = Registry.CurrentUser.OpenSubKey("Software\\\\SAMP").GetValue("gta_sa_exe").ToString();
+			sa_path = sa_path.Substring(0, sa_path.LastIndexOf("\\") + 1);
+		}
 		ip = ipAddress;
 	}
 	
@@ -76,8 +81,6 @@ public class Launcher
 	/// 	gta sa path yang ada SA:MP nya
 	/// </returns>
 	public string GetPath() {
-		sa_path = Registry.CurrentUser.OpenSubKey("Software\\\\SAMP").GetValue("gta_sa_exe").ToString();
-		sa_path = sa_path.Substring(0, sa_path.LastIndexOf("\\") + 1);
 		return sa_path;
 	}
 }
