@@ -1,5 +1,5 @@
 /*
- * Launcher Class v2.0
+ * Launcher Class v2.1
  * Created by Kirima2nd.
  * Date: 4/26/2021
  * 
@@ -52,10 +52,15 @@ public class Launcher
 		if (string.IsNullOrEmpty(GetPath())) {
 		    	return false;
 		}
-
-		Registry.CurrentUser.OpenSubKey("Software\\SAMP", writable: true).SetValue("PlayerName", userName);
-		Process.Start(GetPath() + "samp.exe", ipAddress + " " + serverPassword);
-		return true;
+		
+		try {
+			Registry.CurrentUser.OpenSubKey("Software\\SAMP", writable: true).SetValue("PlayerName", userName);
+			Process.Start(GetPath() + "samp.exe", ipAddress + " " + serverPassword);
+			return true;
+		}
+		catch {
+			return false;
+		}
 	}
 	/// <summary>
 	/// Untuk menutup proses gta sa
