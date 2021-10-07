@@ -1,5 +1,5 @@
 /*
- * Launcher Class v1.0
+ * Launcher Class v2.0
  * Created by Kirima2nd.
  * Date: 4/26/2021
  * 
@@ -44,8 +44,8 @@ public class Launcher
 	/// <returns>
 	/// 	True - Jika berhasil dijalankan
 	///	</returns>
-	public bool Start(String ip, String name, String server_password) {
-		if (string.IsNullOrEmpty(ip)) {
+	public bool StartSA(String ipAddress, String userName, String serverPassword) {
+		if (string.IsNullOrEmpty(ipAddress)) {
 			return false;
 		}
 		
@@ -53,8 +53,8 @@ public class Launcher
 		    	return false;
 		}
 
-		Registry.CurrentUser.OpenSubKey("Software\\SAMP", writable: true).SetValue("PlayerName", name);
-		Process.Start(GetPath() + "samp.exe", ip + " " + password);
+		Registry.CurrentUser.OpenSubKey("Software\\SAMP", writable: true).SetValue("PlayerName", userName);
+		Process.Start(GetPath() + "samp.exe", ipAddress + " " + serverPassword);
 		return true;
 	}
 	/// <summary>
