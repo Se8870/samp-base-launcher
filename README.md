@@ -4,8 +4,8 @@ SA:MP Launcher Class menggunakan C#
 
 ## List Fungsi
 ```c#
-public String GetPath();
-public bool Start(String ipAddress, String userName, String serverPassword);
+public String GetSAPath();
+public bool StartSA(String ipAddress, String userName, String serverPassword);
 public bool CloseSA();
 ```
 
