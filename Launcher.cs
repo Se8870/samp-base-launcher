@@ -14,47 +14,51 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using Microsoft.Win32;
 
-
 public class Launcher
 {
-	private string ip = null;
-	private string sa_path = null;
+	private string _ip = null;
+	private string _path = null;
 	
-	public Launcher(string ipAddress)
+	public Launcher()
 	{
 		// init when declared
-		if (sa_path == null) {
-			sa_path = Registry.CurrentUser.OpenSubKey("Software\\\\SAMP").GetValue("gta_sa_exe").ToString();
-			sa_path = sa_path.Substring(0, sa_path.LastIndexOf("\\") + 1);
-		}
-		ip = ipAddress;
+		_path = Registry.CurrentUser.OpenSubKey("Software\\\\SAMP").GetValue("gta_sa_exe").ToString();
+		_path = sa_path.Substring(0, sa_path.LastIndexOf("\\") + 1);
+	}
+	
+	/// <summary>
+	/// Mengambil path dari SA:MP yang diambil dari Registry Key
+	/// </summary>
+	/// <returns>
+	/// 	gta sa path yang ada SA:MP nya
+	/// </returns>
+	public String GetPath() {
+		return _path;
 	}
 	
 	/// <summary>
 	/// Menjalankan samp.exe dengan argumen name dan password_server
 	/// </summary>
+	/// <param name="ip">IP Address Server yang dituju</param>
 	/// <param name="name">Bertugas untuk memasukkan nama ke registry</param>
 	/// <param name="password_server">Bertugas untuk memasukkan password_server ke Process</param>
 	/// <returns>
-	/// 	False - Jika IP dari Launcher(string ipAddress) kosong
-	/// </returns>
-	/// <returns>
-	/// 	False - Jika sa_path kosong
+	/// 	False - Jika IP Address kosong atau jika GTA SA Path kosong
 	/// </returns>
 	/// <returns>
 	/// 	True - Jika berhasil dijalankan
 	///	</returns>
-	public bool Start(string name, string password) {
+	public bool Start(String ip, String name, String server_password) {
 		if (string.IsNullOrEmpty(ip)) {
 			return false;
 		}
 		
-		if (string.IsNullOrEmpty(sa_path)) {
+		if (string.IsNullOrEmpty(GetPath())) {
 		    	return false;
 		}
 
 		Registry.CurrentUser.OpenSubKey("Software\\SAMP", writable: true).SetValue("PlayerName", name);
-		Process.Start(sa_path + "samp.exe", ip + password);
+		Process.Start(GetPath() + "samp.exe", ip + password + " ");
 		return true;
 	}
 	/// <summary>
@@ -66,21 +70,12 @@ public class Launcher
 	/// <returns>
 	/// 	True - Jika ada yang berjalan, maka otomatis akan dimatikan
 	/// </returns>
-	public bool Close() {
+	public bool CloseSA() {
 		Process[] processes = Process.GetProcessesByName("gta_sa.exe");
 		if (processes.Length > 0) {
 		    processes[0].CloseMainWindow();
 		    return true;
 		}
 		return false;
-	}
-	/// <summary>
-	/// Mengambil path dari SA:MP yang diambil dari Registry Key
-	/// </summary>
-	/// <returns>
-	/// 	gta sa path yang ada SA:MP nya
-	/// </returns>
-	public string GetPath() {
-		return sa_path;
 	}
 }
