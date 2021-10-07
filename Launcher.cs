@@ -14,8 +14,8 @@ using Microsoft.Win32;
 
 public class Launcher
 {
-	private string _ip = null;
-	private string _path = null;
+	private String _ip = null;
+	private String _path = null;
 	
 	public Launcher()
 	{
