@@ -28,7 +28,7 @@ public class Launcher
 	/// <returns>
 	/// 	gta sa path yang ada SA:MP nya
 	/// </returns>
-	public String GetPath() {
+	public String GetSAPath() {
 		return _path;
 	}
 	
