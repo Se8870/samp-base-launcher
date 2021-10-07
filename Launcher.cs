@@ -14,9 +14,7 @@ using Microsoft.Win32;
 
 public class Launcher
 {
-	private String _ip = null;
 	private String _path = null;
-	
 	public Launcher()
 	{
 		// init when declared
