@@ -1,22 +1,26 @@
 # samp-base-launcher
 SA:MP Launcher Class menggunakan C#
 
-Kalau ga ngerti gabisa bantu, coba research sendiri :P
+
+## List Fungsi
+```c#
+public String GetPath();
+public bool Start(String ipAddress, String userName, String serverPassword);
+public bool CloseSA();
+```
+
+
 
 ## Contoh
-
 ```c#
-
-// Taruh ini sebelum public MainForm atau public Form1
-Laucher launcher = new Launcher();
-
 public Button1_Clicked(object sender, EventArgs e) {
+    Laucher launcher = new Launcher();
+    
     try {
-        launcher.Start("ip-kamu.net:7777", "Nama_Kalian", "password_server");
+        launcher.StartSA("ip-kamu.net:7777", "Nama_Kalian", "password_server");
     }
     catch {
         // Error message
     }
 }
-
 ```
