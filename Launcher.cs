@@ -58,7 +58,7 @@ public class Launcher
 		}
 
 		Registry.CurrentUser.OpenSubKey("Software\\SAMP", writable: true).SetValue("PlayerName", name);
-		Process.Start(GetPath() + "samp.exe", ip + password + " ");
+		Process.Start(GetPath() + "samp.exe", ip + " " + password);
 		return true;
 	}
 	/// <summary>
