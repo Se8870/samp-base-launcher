@@ -8,11 +8,11 @@ Kalau ga ngerti gabisa bantu, coba research sendiri :P
 ```c#
 
 // Taruh ini sebelum public MainForm atau public Form1
-Laucher launcher = new Launcher("ip-kamu.net:7777 "); // selalu tinggalkan spasi paling ujung
+Laucher launcher = new Launcher();
 
 public Button1_Clicked(object sender, EventArgs e) {
     try {
-        launcher.Start("Nama_Kalian", "password_server");
+        launcher.Start("ip-kamu.net:7777", "Nama_Kalian", "password_server");
     }
     catch {
         // Error message
