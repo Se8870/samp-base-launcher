@@ -4,9 +4,7 @@
  * Date: 4/26/2021
  * 
  * 
- * Dilarang diperjual belikan, diomelin diluar tanggung jawab
- * Mau disebar, mau di pake sendiri silahkan, in fact this is open source lol
- * 
+ * Dilarang memperjual-belikan kode ini tanpa seizin dari pembuat.
  */
  
 using System;
